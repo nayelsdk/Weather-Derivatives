@@ -1,0 +1,237 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Privé / outils / brouillons — non poussés sur GitHub
+# ─────────────────────────────────────────────────────────────────────────────
+CLAUDE.md
+.claude/
+.streamlit/
+.vscode/
+notes.ipynb
+test2.ipynb
+scraping.py
+scraping_v2.py
+*.bib
+!report/references.bib
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Données — jamais sur GitHub
+# ─────────────────────────────────────────────────────────────────────────────
+no_git/
+# points de restauration locaux de l'app (ex version_0) — pas sur GitHub
+backups/
+# paquet de déploiement Hugging Face (910 Mo de RF, LFS) — repo séparé, jamais sur GitHub
+hf_space/
+data/raw/
+data/processed/
+data/external/
+*.csv
+*.parquet
+*.xlsx
+*.xls
+*.hdf
+*.h5
+*.feather
+*.nc          # NetCDF (données météo)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Exceptions Onyxia — données d'ENTRÉE traquées pour qu'un `git clone` permette
+# de re-runner TOUS les notebooks (les ignores *.csv/*.parquet/*.xls ci-dessus
+# bloquent tout par défaut ; on ré-autorise explicitement les inputs).
+#   artifacts/ (2.6G, modèles RF jusqu'à 273M) : PAS dans git (limite GitHub 100M)
+#   → ajoutés à la main sur Onyxia (glisser le dossier artifacts/).
+# ─────────────────────────────────────────────────────────────────────────────
+# Température : datasets OU + NOAA brut + forecasts GEFS
+!data/cities/
+!data/cities/*.csv
+!data/cities_cleaned/
+!data/cities_cleaned/*.csv
+!data/NOAA_forecast/
+!data/NOAA_forecast/*.csv
+!data/raw_data/
+!data/raw_data/*.csv
+!data/summary/
+!data/summary/*.csv
+# Gaz : Henry Hub + futures + stocks + conso (pilier GARCH)
+!data/Henry_Hub_Natural_Gas_Spot_Price.csv
+!data/NG_PRI_FUT_S1_D.xls
+!data/ngs_stocks.xls
+!data/NG_consumption.xls
+# Outputs lus par les notebooks (concours, métriques horizons)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Modèles sauvegardés — trop lourds pour GitHub
+# ─────────────────────────────────────────────────────────────────────────────
+artifacts/
+*.pkl
+*.joblib
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Logs d'entraînement — dossier traqué (logs/.gitkeep), contenu ignoré
+# ─────────────────────────────────────────────────────────────────────────────
+logs/*
+!logs/.gitkeep
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Figures générées (ignorées par défaut)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Exceptions : on PUSH les figures exportées des notebooks (parties 0 & 1),
+# rangées dans outputs/figures/, + la carte des villes — livrables visuels du dépôt.
+
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Jupyter Notebook
+.ipynb_checkpoints
+test.ipynb
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+weather_deriv/
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mkdocs
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# pytype
+.pytype/
+
+# Cython
+cython_debug/
+
+# Ruff
+.ruff_cache/
+
+# PyPI
+.pypirc
+
+# PDM
+.pdm.toml
+.pdm-python
+.pdm-build/
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath
+*.sage.py
+
+# Cursor
+.cursorignore
+.cursorindexingignore
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# ancien paquet de publication (approche abandonnée — le repo public EST ce repo,
+# avec le code source masqué ; voir le bloc « moteur privé » ci-dessous)
+public_release/
+
+# ── Moteur privé : masqué du GitHub public ────────────────────────────────────
+# On montre le TRAVAIL (notebooks exécutés + rapports PDF + README avec le lien
+# de l'app), mais PAS le code source qui l'a produit. Les fichiers restent sur le
+# disque (nécessaires au build HF et au dev local) : ils ne sont juste plus suivis
+# par git. Comme ils ont déjà été commités, il faut aussi les « dé-suivre » une
+# fois : `git rm -r --cached src app scripts papers` (cf. commandes fournies).
+src/
+app/
+scripts/
+papers/
+
+# ── Rangement : repo minimal (notebooks 0-3, PDF report EN, README, requirements) ──
+/outputs/
+/data/
+/logs/
+/contexte_projet_v2.txt
+/LOGO-ENSAE.png
+2_Gaz_Naturel/kalman_filter.py
+2_Gaz_Naturel/*.csv
+# report : uniquement les PDF anglais
+/report/*
+!/report/main_en.pdf
+!/report/extension_en.pdf
